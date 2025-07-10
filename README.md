@@ -15,4 +15,28 @@ Windows requires the `.pem` file to have restricted permissions for security. Ru
 
 ```cmd
 powershell -Command "& {icacls '<path-to-pem-file>.pem' /inheritance:r}"
-for /f "delims=" %u in ('whoami') do powershell -Command "icacls '<path-to-pem-file>.pem' /grant:r '%u:(R)'"
+for /f "delims=" %u in ('whoami') do powershell -Command "icacls '<path-to-pem-file>.pem' /grant:r '%u:(R)'" 
+```
+
+##🔁 Replace <path-to-pem-file> with the full absolute path to your PEM file. Example:
+
+```cmd
+C:\Users\YourUsername\.ssh\my-key.pem
+```
+
+## Step 2: Transfer the Setup Script to EC2 Using SCP
+
+```cmd
+scp -i "<path-to-pem-file>.pem" <local-path-to-setup.sh> ec2-user@<ec2-public-ip>:/home/ec2-user/
+```
+Replace:
+
+<path-to-pem-file>.pem> → Your PEM key path.
+
+<local-path-to-setup.sh> → Path to your setup.sh script (e.g., X:/scripts/setup.sh).
+
+<ec2-public-ip> → The public IP of your EC2 instance.
+
+
+
+
