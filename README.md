@@ -35,6 +35,9 @@ Replace:
 
 <local-path-to-setup.sh> → Path to your setup.sh script (e.g., X:/scripts/setup.sh).
 
+
+
+
 <ec2-public-ip> → The public IP of your EC2 instance.
 
 
